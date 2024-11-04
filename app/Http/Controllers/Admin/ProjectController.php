@@ -9,6 +9,7 @@ use App\Models\{
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -35,7 +36,8 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        
+       
+
         $request->validate([
             'title' => 'required|min:3|max:64',
             'description' => 'required|min:1|max:4096',
@@ -45,6 +47,8 @@ class ProjectController extends Controller
         $data = $request->all();
 
         $project = Project::create($data);
+
+        $gatto_img = Storage::put('uploads', $data ['gatto']);
 
         return redirect()->route('admin.projects.show', ['project' => $project->id]);
     }

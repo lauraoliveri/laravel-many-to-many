@@ -30,7 +30,7 @@
 
     <div class="mb-3">
         <label for="deadline" class="form-label">Scadenza<span class="text-danger">*</span></label>
-        <input type="text" class="form-control @error('deadline') is-invalid @enderror" id="deadline" name="deadline" required min="0" max="5000" step="50" placeholder="Inserisci il valore di Scadenza..." value="{{ old('deadline') }}">
+        <input type="text" class="form-control" id="deadline" name="deadline" required  placeholder="Inserisci la scadenza..." value="{{ old('deadline') }}">
 
         @error('deadline')
             <div class="alert alert-danger mt-1">
